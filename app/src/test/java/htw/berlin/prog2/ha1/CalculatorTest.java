@@ -87,10 +87,10 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
-// TODO
+// TODO hier weitere Tests erstellen
 
     @Test
-    @DisplayName("should display positiv outcome ")
+    @DisplayName("should display positive outcome ")
     void testSubstraction(){
 
         Calculator calc = new Calculator();
@@ -109,7 +109,62 @@ class CalculatorTest {
         assertEquals(expected, actual);
 
     }
+    @Test
+    @DisplayName ("should display correct result after adding 3 or more positive multi digit numbers")
+    void testAddUp(){
 
-    //TODO hier weitere Tests erstellen
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(1);
+        calc.pressDigitKey(3);
+
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(0);
+        calc.pressDigitKey(9);
+
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(0);
+        calc.pressDigitKey(9);
+        calc.pressEqualsKey();
+
+        String expected = "31";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+
+    }
+
+    @Test
+    @DisplayName("should display result after adding two large numbers")
+    void testAdditionWithLargeNumbers() {
+        Calculator calc = new Calculator();
+
+        // Enter the first large number
+        for (int i = 0; i < 10; i++) {
+            calc.pressDigitKey(9);
+        }
+        calc.pressBinaryOperationKey("+");
+
+        // Enter the second large number
+        for (int i = 0; i < 10; i++) {
+            calc.pressDigitKey(9);
+        }
+        calc.pressEqualsKey();
+
+        String expected = "19999999998";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+
+
 }
+
+
+
+
+
+
+
 
