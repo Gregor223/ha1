@@ -118,6 +118,10 @@ public class Calculator {
      * und das Ergebnis direkt angezeigt.
      */
     public void pressEqualsKey() {
+
+        if (latestOperation == null || latestOperation.isEmpty()) {                 // wenn keine latest operation dann wird gleicher wert wiedergegeben
+            return; // Do nothing if no operation is set
+        }
         var result = switch(latestOperation) {
             case "+" -> latestValue + Double.parseDouble(screen);
             case "-" -> latestValue - Double.parseDouble(screen);
@@ -131,6 +135,5 @@ public class Calculator {
         if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
         if (screen.length() > 11) screen = screen.substring(0, 11);                 // festlegung auf 11 maximale zeichen, alles dahinter wird nicht geschrieben
     }
-
 
 }
