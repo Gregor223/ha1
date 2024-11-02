@@ -156,8 +156,18 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+    @Test
+    @DisplayName("should not change screen on equals press without an operation")
+    void testEqualsWithoutOperation() {
+        Calculator calc = new Calculator();
 
+        calc.pressDigitKey(8);
+        calc.pressEqualsKey();
 
+        String expected = "8";
+        String actual = calc.readScreen();
+        assertEquals(expected, actual);
+    }
 
 }
 
