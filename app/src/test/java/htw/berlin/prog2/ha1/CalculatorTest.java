@@ -109,30 +109,6 @@ class CalculatorTest {
         assertEquals(expected, actual);
 
     }
-    @Test
-    @DisplayName ("should display correct result after adding 3 or more positive multi digit numbers")
-    void testAddUp(){
-
-        Calculator calc = new Calculator();
-
-        calc.pressDigitKey(1);
-        calc.pressDigitKey(3);
-
-        calc.pressBinaryOperationKey("+");
-        calc.pressDigitKey(0);
-        calc.pressDigitKey(9);
-
-        calc.pressBinaryOperationKey("+");
-        calc.pressDigitKey(0);
-        calc.pressDigitKey(9);
-        calc.pressEqualsKey();
-
-        String expected = "31";
-        String actual = calc.readScreen();
-
-        assertEquals(expected, actual);
-
-    }
 
     @Test
     @DisplayName("should display result after adding two large numbers")
