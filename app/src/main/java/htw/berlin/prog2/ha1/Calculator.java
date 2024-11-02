@@ -125,9 +125,12 @@ public class Calculator {
             case "/" -> latestValue / Double.parseDouble(screen);
             default -> throw new IllegalArgumentException();
         };
-        screen = Double.toString(result);
+        screen = String.format("%.2f", result);                                     // Result umwandelung in String, 2 nachkommastellen angezeigt
         if(screen.equals("Infinity")) screen = "Error";
         if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
         if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
+        if (screen.length() > 11) screen = screen.substring(0, 11);                 // festlegung auf 11 maximale zeichen, alles dahinter wird nicht geschrieben
     }
+
+
 }
